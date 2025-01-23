@@ -102,7 +102,6 @@ print(bicycles[-1].title())
 bicycles = ['trek', 'cannondale', 'redline', 'specialized']
 message = f"my first bicycle was a {bicycles[0].title()}."
 print(message)
-
 motorcycles = ['honda', 'yamaha', 'suzuki'] 
 print(motorcycles)
 
@@ -124,7 +123,7 @@ motorcycles.append('bmw')
 
 print(motorcycles)
  
- # inserting elements into a list
+# inserting elements into a list
 motorcycles = ['honda', 'yamaha', 'suzuki']
 motorcycles.insert(0, 'ducati')
 print(motorcycles)
@@ -362,5 +361,266 @@ players = ['charles', 'martina', 'michael', 'florence', 'eli']
 print("Here are the first three players on my team:")
 for player in players[:3]:
     print(player.title())
-
     
+# copying a list
+my_foods = ['pizza', 'falafel', 'carrot cake']
+friend_foods = my_foods[:]
+
+my_foods.append('cannoli')
+friend_foods.append('ice cream')
+
+print("My favorite foods are:")
+print(my_foods)
+
+print("\nMy friend's favorite foods are:")
+print(friend_foods)
+
+# initial list of items
+items = ['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig', 'grape']
+
+# adding lines to meet the requirements
+
+print("The first three items in the list are:")
+print(items[:3])
+
+# print three items from the middle of the list
+print("three items from the middle of the list are:")
+middle_index = len(items)//2
+print(items[middle_index-1:middle_index+2])
+
+# print the last three items in the list
+print("the last three items in the list are:")
+print(items[-3:])
+
+# tuples
+dimensions = (200, 50)
+print(dimensions[0])
+print(dimensions[1])
+
+# looping through all values in a tuple
+dimensions = (200, 50)
+for dimension in dimensions:
+    print(dimension)
+    
+# writing over a tuple
+dimensions = (200, 50)
+print("Original dimensions:")
+for dimension in dimensions:
+    print(dimension)
+    
+dimensions = (400, 100)
+print("\nModified dimensions:")
+for dimension in dimensions:
+    print(dimension)
+    
+# foods
+foods = ('pizza', 'falafel', 'carrot cake', 'cannoli', 'ice cream')
+for food in foods:
+    print(food)
+    
+# revised foods
+foods = ('pizza', 'falafel', 'carrot cake', 'apple', 'banana')
+for food in foods:
+    print(food)
+
+# if statements
+cars = ['audi', 'bmw', 'subaru', 'toyota']
+for car in cars:
+    if car == 'bmw':
+        print(car.upper())
+    else:
+        print(car.title())
+
+# checking for inequality
+requested_topping = 'mushrooms'
+
+if requested_topping != 'anchovies':
+    print("Hold the anchovies!")  
+# numerical comparisons
+answer = 17
+
+if answer != 42:
+    print("That is not the correct answer. please try again!")
+    
+# checking whether a value is not in a list
+banned_users = ['andrew', 'carolina', 'david']
+user = "marie"
+
+if user not in banned_users:
+    print(f"{user.title()}, you can post a response if you wish.")
+
+# boolean expressions
+car = 'subaru'
+fruit = 'apple'
+age = 25
+temperature = 30
+is_raining = True
+
+# true tests
+print("Is car == 'subaru'? I predict True.")
+print(car == 'subaru')
+
+print("\nIs fruit == 'apple'? I predict True.")
+print(fruit == 'apple')
+
+print("\nIs age > 25? I predict True.")
+print(age > 25)
+
+print("\nIs temperature < 40? I predict True.")
+print(temperature < 40)
+
+print("\nIs is_raining == True? I predict True.")
+print(is_raining == True)
+
+# false tests
+print("\nIs car == 'audi'? I predict False.")
+print(car == 'audi')
+
+print("\nIs fruit == 'banana'? I predict False.")
+print(fruit == 'banana')
+
+print("\nIs age < 25? I predict False.")
+print(age < 25)
+
+print("\nIs temperature > 35? I predict False.")
+print(temperature > 35)
+
+print("\nIs is_raining == False? I predict False.")
+print(is_raining == False)
+
+# if statements
+age = 19
+if age >= 18:
+    print("You are old enough to vote!")
+    print("Have you registered to vote yet?")
+    
+# if-else statements
+age = 17
+if age >= 18:
+    print("You are old enough to vote!")
+    print("Have you registered to vote yet?")
+else:
+    print("Sorry, you are too young to vote.")
+    print("Please register to vote as soon as you turn 18!")
+    
+# if-elif-else chain
+age = 12
+if age < 4:
+    print("Your admission cost is $0.")
+elif age < 18:
+    print("Your admission cost is $25.")
+else:
+    print("Your admission cost is $40.")
+    
+age = 12
+
+if age < 4:
+    price = 0
+elif age < 18:
+    price = 25
+else:
+    price = 40
+
+print(f"Your admission cost is ${price}")
+
+# using multiple elif blocks
+age = 65
+
+if age < 4:
+    price = 0
+elif age < 18:  
+    price = 25
+elif age < 65:              
+    price = 40
+else:
+    price = 20
+
+print(f"Your admission cost is ${price}.")
+ 
+# testing multiple conditions
+requested_toppings = ['mushrooms', 'extra cheese']
+
+if 'mushrooms' in requested_toppings:
+    print("Adding mushrooms.")
+if 'pepperoni' in requested_toppings:
+    print("Adding pepperoni.")
+if 'extra cheese' in requested_toppings:
+    print("Adding extra cheese.")
+    
+print("\nFinished making your pizza!")   
+
+# stages of life
+age = 65
+
+if age < 2:
+    stage = 'baby'
+elif age < 4:
+    stage = 'toddler'
+elif age < 13:
+    stage = 'kid'
+elif age < 20:
+    stage = 'teenager'
+elif age < 65:
+    stage = 'adult'
+else:
+    stage = 'elder'
+    
+print(f"You are a/an {stage}.")
+
+# using if statements with lists
+# checking for special items
+requested_toppings = ['mushrooms', 'green peppers', 'extra cheese']
+for requested_topping in requested_toppings:
+    print(f"Adding {requested_topping}.")
+    
+print("\nFinished making your pizza!")
+
+requested_toppings = ['mushrooms', 'green peppers', 'extra cheese']
+for requested_topping in requested_toppings:
+    if requested_topping == 'green peppers':
+        print("Sorry, we are out of green peppers right now.")
+    else:
+        print(f"Adding {requested_topping}.")
+        
+print("\nFinished making your pizza!")
+
+# checking that a list is not empty
+requested_toppings = []
+
+if requested_toppings:
+    for requested_topping in requested_toppings:
+        print(f"Adding {requested_topping}.")
+    print("\nFinished making your pizza!")
+else:
+    print("Are you sure you want a plain pizza?")
+    
+# using multiple lists
+available_toppings = ['mushrooms', 'olives', 'green peppers',
+                      'pepperoni', 'pineapple', 'extra cheese']
+requested_toppings = ['mushrooms', 'french fries', 'extra cheese']
+
+for requested_topping in requested_toppings:
+    if requested_topping in available_toppings:
+        print(f"Adding {requested_topping}.")
+    else:
+        print(f"Sorry, we don't have {requested_topping}.")
+    
+print("\nFinished making your pizza!")
+
+# usernames
+
+# list of current users
+current_users = ['amos', 'kipchumba', 'victor', 'peter', 'mercy']
+
+# list of new users
+new_users = ['amos', 'kipchumba', 'victor', 'jane', 'james']
+
+#convert current_users to lowercase
+current_users_lower = [user.lower() for user in current_users]
+
+# loop through new_users
+for user in new_users:
+    if user.lower() in current_users_lower:
+        print(f"Sorry {user}, that username is taken.")
+    else:
+        print(f"Great, {user} is available.")
