@@ -288,3 +288,79 @@ for pizza in favorite_pizzas:
 print("\nI really enjoy trying different types of pizza.")
 print("Pizza is one of my favorite foods because is is so versatile and delicious.")
 print("I could eat pizza any day of the week. I really love pizza!")
+
+# making numerical lists
+for value in range(1, 5):
+    print(value)
+    
+numbers = list(range(1, 6))
+print(numbers)
+
+# using to list even numbers between 1 and 10
+even_numbers = list(range(2, 11, 2))
+print(even_numbers)
+
+# first 10 square numbers
+squares = []
+for value in range(1, 11):
+    square = value ** 2
+    squares.append(square)
+    
+print(squares)  
+
+squares = []
+for value in range(1, 11):
+    squares.append(value ** 2)
+    
+    
+print(squares)  
+
+# using list comprehension
+squares = [value ** 2 for value in range(1, 11)]
+print(squares)
+
+# counting 1to 20
+for value in range(1, 21):
+    print(value)
+    
+# counting from 1 to 1,000,000 using min(), max() and sum()
+numbers = list(range(1, 100001))
+print(min(numbers))
+print(max(numbers))
+print(sum(numbers))
+
+# odd numbers
+add_numbers = list(range(1, 21, 2))
+for number in add_numbers:
+    print(number)
+    
+# threes
+threes = list(range(3, 31, 3))
+for number in threes:
+    print(number)
+    
+# cubes 
+cubes = []
+for value in range(1, 11):
+    cubes.append(value ** 3)
+    print(cubes)
+    
+#cube compression
+cubes = [value ** 3 for value in range(1, 11)]
+print(cubes)
+
+# slicing a list 
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+print(players[0:3])
+print(players[1:4])
+print(players[:4])
+print(players[2:])
+print(players[-3:])
+
+# looping through a slice
+players = ['charles', 'martina', 'michael', 'florence', 'eli']
+print("Here are the first three players on my team:")
+for player in players[:3]:
+    print(player.title())
+
+    
