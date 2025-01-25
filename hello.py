@@ -874,11 +874,21 @@ for username, user_info in users.items():
     print(f"\tFull_name: {full_name.title()}")
     print(f"\tLocation: {location.title()}")
 
-# modulo operator
-number = input("Enter a number, and I'll tell you if it's even or odd: ")
-number = int(number)
+# introducing while loops
+current_number = 1
+while current_number <= 5:
+    print(current_number)
+    current_number += 1
+    
+# using a flag 
+prompt = "\nTell me something, and i will repeat it back to you:"
+prompt += "\nEnter 'quit' to end the program."
 
-if number % 2 == 0:
-    print(f"\nThe number {number} is even.")
-else:
-    print(f"\n?The number {number} is odd.")
+active = True
+while active:
+    message = input(prompt)
+    
+    if message == 'quit':
+        active = False
+    else:
+        print(message)
