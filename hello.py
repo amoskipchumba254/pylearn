@@ -894,4 +894,74 @@ x = 1
 while x <= 5:
     print(x)
     x += 1
+    
+# moving items from one list to another
+# start with users that need to be verified,
+# and an empty list to hold confirmed users
+unconfirmed_users = ['alice', 'brian', 'candace']
+confirmed_users = []
+
+# verify each user until there are no more unconfirmed users
+# move each verified user into the list of confirmed users
+while unconfirmed_users:
+    current_user = unconfirmed_users.pop()
+    
+    print(f"Verifying user: {current_user.title()}")
+    confirmed_users.append(current_user)
+    
+# display all confirmed users
+print("\nThe following users have been confirmed:")
+for confirmed_user in confirmed_users:
+    print(confirmed_user.title())
         
+        
+# removing all instances of specific values from a list
+pets = ['dog', 'cat', 'dog', 'goldfish', 'cat', 'rabbit', 'cat']
+print(pets)
+
+while 'cat' in pets:
+    pets.remove('cat')
+    
+print(pets)
+
+# chapter8 functions
+# defining a function
+def greet_user():
+    """Display a simple greeting."""
+    print("Hello!")
+
+greet_user()
+
+# passing information to a function
+def greet_user(username):
+    """Display a simple greeting."""
+    print(f"Hello, {username.title()}!")
+
+greet_user('jesse')
+
+# positional arguments
+def describe_pet(animal_type, pet_name):
+    
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+    
+
+describe_pet('hamster', 'harry')
+describe_pet('dog', 'willie')
+
+# keyword arguments
+def describe_pet(animal_type, pet_name):
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+    
+describe_pet(animal_type='hamster', pet_name='harry')
+
+# default values
+def describe_pet(pet_name, animal_type='dog'):
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+
+describe_pet(pet_name='willie')
