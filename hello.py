@@ -1228,8 +1228,326 @@ class Car:
             self.odometer_reading = mileage
         else:
             print("You can't roll back an odometer!")
+            
+            
 my_new_car = Car('audi', 'a4', 2019)
 print(my_new_car.get_descriptive_name())
 
 my_new_car.update_odometer(23)
 my_new_car.read_odometer()
+
+# incrementing an attribute's value through a method
+class Car:
+    """A simple attempt to represent a car."""
+    
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+        
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+    
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print(f"This car has {self.odometer_reading} miles on it.")
+        
+    def update_odometer(self, mileage):
+        """
+        Set the odometer reading to the given value.
+        Reject the change if it attempts to roll the odometer back.
+        """
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+            
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading."""
+        self.odometer_reading += miles
+        
+        
+my_used_car = Car('subaru', 'outback', 2015)
+print(my_used_car.get_descriptive_name())
+
+my_used_car.update_odometer(23_500)
+my_used_car.read_odometer()
+
+my_used_car.increment_odometer(100)
+my_used_car.read_odometer()
+
+# inheritance
+# the __init__() method for a child class
+
+class Car:
+    """A simple attempt to represent a car."""
+    
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+        
+    def get_descriptive_name(self):
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+    
+    def read_odometer(self):
+        print(f"This car has {self.odometer_reading} miles on it.")
+    
+    def update_odometer(self, mileage):
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+            
+    def increment_odometer(self, miles):
+        self.odometer_reading += miles
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+    
+    def __init__(self, make, model, year):
+        """Initialize attributes of the parent class."""
+        super().__init__(make, model, year)
+        super().__init__(make, model, year)
+
+
+my_tesla = ElectricCar('tesla', 'model s', 2019)
+print(my_tesla.get_descriptive_name())
+
+# defining attributes and methods for the child class
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+    
+    def __init__(self, make, model, year):
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery_size = 75
+        
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+        
+my_tesla = ElectricCar('tesla', 'model s', 2019)
+print(my_tesla.get_descriptive_name())
+my_tesla.describe_battery()
+
+# overriding methods from the parent class
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+    
+    def __init__(self, make, model, year):
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery_size = 75
+        
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+        
+    def fill_gas_tank(self):
+        """Electric cars don't have gas tanks."""
+        print("This car doesn't need a gas tank!")
+        
+# instances asa attributes
+class Car:
+    """A simple attempt to represent a car."""
+    
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+        
+    def get_descriptive_name(self):
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+    
+    def read_odometer(self):
+        print(f"This car has {self.odometer_reading} miles on it.")
+    
+    def update_odometer(self, mileage):
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+            
+    def increment_odometer(self, miles):
+        self.odometer_reading += miles
+
+class Battery:
+    """A simple attempt to model a battery for an electric car."""
+    
+    def __init__(self, battery_size=75):
+        """Initialize the battery's attributes."""
+        self.battery_size = battery_size
+        
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+        
+    def get_range(self):
+        """Print a statement about the range this battery provides."""
+        if self.battery_size == 75:
+            range = 260
+        elif self.battery_size == 100:
+            range = 315
+            
+        print(f"This car can go about {range} miles on a full charge.")
+
+
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+    
+    def __init__(self, make, model, year):
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery = Battery()
+        
+my_tesla = ElectricCar('tesla', 'model s', 2019)
+print(my_tesla.get_descriptive_name())
+my_tesla.battery.describe_battery()
+my_tesla.battery.get_range()
+
+# importing a single class
+from car import Car
+
+my_new_car = Car('audi', 'a4', 2019)
+print(my_new_car.get_descriptive_name())
+
+my_new_car.odometer_reading = 23
+my_new_car.read_odometer()
+
+
+from car import ElectricCar
+
+my_tesla = ElectricCar('tesla', 'model s', 2019)
+print(my_tesla.get_descriptive_name())
+my_tesla.battery.describe_battery()
+my_tesla.battery.get_range()
+
+# importing multiple classes
+from car import Car, ElectricCar
+
+my_beetle = Car('volkswagen', 'beetle', 2019)
+print(my_beetle.get_descriptive_name())
+
+my_tesla = ElectricCar('tesla', 'roadster', 2019)
+print(my_tesla.get_descriptive_name())
+
+# importing the entire module
+import car
+
+my_beetle = car.Car('volkswagen', 'beetle', 2019)
+print(my_beetle.get_descriptive_name())
+
+my_tesla = car.ElectricCar('tesla', 'roadster', 2019)
+print(my_tesla.get_descriptive_name())
+
+# reading an entire file
+with open('C:\\Users\\amoki\\OneDrive\\Desktop\\.py tests\\.pytest\\pi_digits.txt') as file_object:
+    contents = file_object.read()
+print(contents)
+
+with open('C:\\Users\\amoki\\OneDrive\\Desktop\\.py tests\\.pytest\\test.txt') as file_object:
+    contents = file_object.read()
+print(contents)
+
+filename = 'C:\\Users\\amoki\\OneDrive\\Desktop\\.py tests\\.pytest\\pi_digits.txt'
+
+with open(filename) as file_object:
+    for line in file_object:
+        print(line)
+        
+filename = 'C:\\Users\\amoki\\OneDrive\\Desktop\\.py tests\\.pytest\\pi_digits.txt'
+
+with open(filename) as file_object:
+    for line in file_object:
+        print(line.rstrip())
+        
+# making a list of lines from a file
+filename = 'C:\\Users\\amoki\\OneDrive\\Desktop\\.py tests\\.pytest\\pi_digits.txt'
+
+with open(filename) as file_object:
+    lines = file_object.readlines()
+
+for line in lines:
+    print(line.rstrip())
+    
+# working with a file's contents
+filename = 'C:\\Users\\amoki\\OneDrive\\Desktop\\.py tests\\.pytest\\pi_digits.txt'
+
+with open(filename) as file_object:
+    lines = file_object.readlines()
+
+pi_string = ''
+for line in lines:
+    pi_string += line.rstrip()
+    
+print(pi_string)
+print(len(pi_string))
+
+for line in lines:
+    pi_string += line.strip()
+    
+print(pi_string)
+print(len(pi_string))
+
+# writing to a file
+# writing to an empty file_object
+filename = 'programming.txt'
+
+with open(filename, 'w') as file_object:
+    file_object.write("I love programming.")
+    
+# writing multiple lines
+filename = 'programming.txt'
+
+with open(filename, 'w') as file_object:
+    file_object.write("I love programming.\n")
+    file_object.write("I love creating new games.\n")
+    
+# appending to a file
+filename = 'programming.txt'
+
+with open(filename, 'a') as file_object:
+    file_object.write("I also love finding meaning in large datasets.\n")
+    file_object.write("I love creating apps that can run in a browser.\n")
+    
+# exceptions
+# handling the ZeroDivisionError exception
+try:
+    print(5/0)
+except ZeroDivisionError:
+    print("You can't divide by zero!")
+    
+# using exceptions to prevent crashes
+print("Give me two numbers, and I'll divide them.")
+print("Enter 'q' to quit.")
+
+while True:
+    first_number = input("\nFirst number: ")
+    if first_number == 'q':
+        break
+    second_number = input("Second number: ")
+    if second_number == 'q':
+        break
+    try:
+        answer = int(first_number) / int(second_number)
+    except ZeroDivisionError:
+        print("You can't divide by zero!")
+    else:
+        print(answer)
