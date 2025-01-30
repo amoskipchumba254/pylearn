@@ -1534,20 +1534,176 @@ try:
 except ZeroDivisionError:
     print("You can't divide by zero!")
     
-# using exceptions to prevent crashes
-print("Give me two numbers, and I'll divide them.")
-print("Enter 'q' to quit.")
+# handling the FileNotFoundError exception
+filename = 'alice.txt'
 
-while True:
-    first_number = input("\nFirst number: ")
-    if first_number == 'q':
-        break
-    second_number = input("Second number: ")
-    if second_number == 'q':
-        break
+try:
+    with open(filename, encoding='utf-8') as f:
+        contents = f.read()
+        
+except FileNotFoundError:
+    print(f"Sorry, the file {filename} does not exist.")
+    
+# analyzing text
+filename = 'programming.txt'
+
+try:
+    with open(filename, encoding='utf-8') as f:
+        contents = f.read()
+except FileNotFoundError:
+    print(f"Sorry, the file {filename} does not exist.")
+else:
+    # count the approximate number of words in the file
+    words = contents.split()
+    num_words = len(words)
+    print(f"The file {filename} has about {num_words} words.")
+    
+# using json.dump() and json.load()
+import json
+
+numbers = [2, 3, 5, 7, 11, 13]
+
+filename = 'numbers.json'
+with open(filename, 'w') as f:
+    json.dump(numbers, f)
+    
+# reading data back
+import json
+
+filename = 'numbers.json'
+with open(filename) as f:
+    numbers = json.load(f)
+
+print(numbers)
+
+import json
+
+filename = 'username.json'
+
+with open(filename) as f:
+    username = json.load(f)
+    print(f"Welcome back, {username}!")
+
+# combining the two programs
+import json
+
+# load the username, if it has been stored previously
+# otherwise, prompt for the username and store it
+filename = 'username.json'
+try:
+    with open(filename) as f:
+        username = json.load(f)
+except FileNotFoundError:
+    username = input("What is your name? ")
+    with open(filename, 'w') as f:
+        json.dump(username, f)
+        print(f"We'll remember you when you come back, {username}!")
+else:
+    print(f"Welcome back, {username}!")
+
+# refactoring
+import json
+
+def greet_user():
+    """Greet the user by name."""
+    filename = 'username.json'
     try:
-        answer = int(first_number) / int(second_number)
-    except ZeroDivisionError:
-        print("You can't divide by zero!")
+        with open(filename) as f:
+            username = json.load(f)
+    except FileNotFoundError:
+        username = input("What is your name? ")
+        with open(filename, 'w') as f:
+            json.dump(username, f)
+            print(f"We'll remember you when you come back, {username}!")
     else:
-        print(answer)
+        print(f"Welcome back, {username}!")
+        
+greet_user()
+
+# refactoring greet user so that it's not doing too much
+import json
+
+def get_stored_username():
+    """Get stored username if available."""
+    filename = 'username.json'
+    try:
+        with open(filename) as f:
+            username = json.load(f)
+    except FileNotFoundError:
+        return None
+    else:
+        return username
+    
+    def greet_user():
+        """Greet the user by name."""
+        username = get_stored_username()
+        if username:
+            print(f"Welcome back, {username}!")
+        else:
+            username = input("What is your name? ")
+            filename = 'username.json'
+            with open(filename, 'w') as f:
+                json.dump(username, f)
+                print(f"We'll remember you when you come back, {username}!")
+                
+greet_user()
+
+def get_new_username():
+    """Prompt for a new username."""
+    username = input("What is your name? ")
+    filename = 'username.json'
+    with open(filename, 'w') as f:
+        json.dump(username, f)
+    return username
+
+def greet_user():
+    """Greet the user by name."""
+    username = get_stored_username()
+    if username:
+        print(f"Welcome back, {username}!")
+    else:
+        username = get_new_username()
+        print(f"We'll remember you when you come back, {username}!")
+        
+greet_user()
+
+    
+# a passing test
+import unittest
+from name_function import get_formatted_name
+
+class NamesTestCase(unittest.TestCase):
+    """Tests for 'name_function.py'."""
+    
+    def test_first_last_name(self):
+        """Do names like 'Janis Joplin' work?"""
+        formatted_name = get_formatted_name('janis', 'joplin')
+        self.assertEqual(formatted_name, 'Janis Joplin')
+        
+    def test_first_last_middle_name(self):
+        """Do names like 'Wolfgang Amadeus Mozart' work?"""
+        formatted_name = get_formatted_name('wolfgang', 'mozart', 'amadeus')
+        self.assertEqual(formatted_name, 'Wolfgang Amadeus Mozart')
+        
+if __name__ == '__main__':
+    unittest.main()
+    
+# testing a class
+from survey import AnonymousSurvey
+
+# define a question, and make a survey
+question = "What language did you first learn to speak?"
+my_survey = AnonymousSurvey(question)
+
+# show the question, and store responses to the question
+my_survey.show_question()
+print("Enter 'q' at any time to quit.\n")
+while True:
+    response = input("Language: ")
+    if response == 'q':
+        break
+    my_survey.store_response(response)
+    
+# show the survey results
+print("\nThank you to everyone who participated in the survey!")
+my_survey.show_results()

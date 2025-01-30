@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Account Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-bottom: 100px; /* Added to prevent footer overlap */
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #4CAF50;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 8px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>User Account Details</h1>
+    </header>
+
+    <main>
+        <h2>Tech Interests</h2>
+        <ul>
+            <li>Excel and managing spreadsheet data</li>
+            <li>PHP applications and database development</li>
+            <li>Artificial intelligence (AI) and Android development</li>
+            <li>Mastering Git and GitHub</li>
+            <li>UI/UX design</li>
+            <li>Learning programming languages: Python and JavaScript</li>
+            <li>Programming languages for specializations:
+                <ul>
+                    <li>Full-stack development</li>
+                    <li>AI/ML & data science</li>
+                    <li>Blockchain</li>
+                    <li>Cryptography</li>
+                    <li>Cybersecurity</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Business Ideas and Projects</h2>
+        <ul>
+            <li>Starting a company in the networking and communication sector</li>
+            <li>Connecting schools in Kenya to the internet:
+                <ul>
+                    <li>Target rural areas and market centers</li>
+                    <li>Use Starlink or fiber optic internet</li>
+                    <li>Charge 10,000 KES monthly</li>
+                    <li>Implement a billing system for access</li>
+                </ul>
+            </li>
+            <li>Starting a timber processing company in Kenya</li>
+            <li>Starting a construction company in Kenya</li>
+            <li>Developing a robot for agricultural purposes</li>
+            <li>Chicken incubation business</li>
+            <li>Final year project ideas:
+                <ul>
+                    <li>AI-powered tutoring system</li>
+                    <li>AI-powered learning management system using NLP</li>
+                </ul>
+            </li>
+            <li>Student rental management system for Kenya</li>
+        </ul>
+
+        <h2>Achievements</h2>
+        <ul>
+            <li>Completed an industrial attachment at State House Nairobi in the ICT Department</li>
+        </ul>
+
+        <h2>Preferences</h2>
+        <ul>
+            <li>Writing author names:
+                <ul>
+                    <li>Names in full (first and last), without separating them with commas</li>
+                    <li>Multiple authors separated by commas</li>
+                </ul>
+            </li>
+            <li>Specific format for writing recommendations</li>
+        </ul>
+
+        <h2>Supervisor</h2>
+        <ul>
+            <li>Peter Mwangi</li>
+        </ul>
+
+        <div class="button-group">
+            <button id="toggleBusinessButton">Toggle Business Ideas</button>
+            <button id="toggleTechButton">Toggle Tech Interests</button>
+            <button id="toggleAchievementsButton">Toggle Achievements</button>
+            <button id="togglePreferencesButton">Toggle Preferences</button>
+            <button id="toggleSupervisorButton">Toggle Supervisor</button>
+            <button id="toggleAllButton">Toggle All Sections</button>
+        </div>
+
+        <script>
+            // Function to toggle visibility of a section
+            function toggleSection(section) {
+                if (section.style.display === 'none') {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            }
+
+            // Get all sections
+            const techSection = document.querySelector('main h2:nth-of-type(1) + ul');
+            const businessSection = document.querySelector('main h2:nth-of-type(2) + ul');
+            const achievementsSection = document.querySelector('main h2:nth-of-type(3) + ul');
+            const preferencesSection = document.querySelector('main h2:nth-of-type(4) + ul');
+            const supervisorSection = document.querySelector('main h2:nth-of-type(5) + ul');
+
+            // Add event listeners for each button
+            document.getElementById('toggleBusinessButton').addEventListener('click', () => toggleSection(businessSection));
+            document.getElementById('toggleTechButton').addEventListener('click', () => toggleSection(techSection));
+            document.getElementById('toggleAchievementsButton').addEventListener('click', () => toggleSection(achievementsSection));
+            document.getElementById('togglePreferencesButton').addEventListener('click', () => toggleSection(preferencesSection));
+            document.getElementById('toggleSupervisorButton').addEventListener('click', () => toggleSection(supervisorSection));
+            
+            // Toggle all sections
+            document.getElementById('toggleAllButton').addEventListener('click', function() {
+                const allSections = [techSection, businessSection, achievementsSection, preferencesSection, supervisorSection];
+                const areAllVisible = allSections.every(section => section.style.display !== 'none');
+                
+                allSections.forEach(section => {
+                    section.style.display = areAllVisible ? 'none' : 'block';
+                });
+            });
+        </script>
+    </main>
+
+    <footer>
+        &copy; 2024 User Account Details
+    </footer>
+</body>
+</html>
